@@ -20,6 +20,7 @@ describe('application / gdaltransform', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('gdaltransform', async function () {
         const coords = [
             [27.143757, 38.4247972, 0],
@@ -34,6 +35,7 @@ describe('application / gdaltransform', function () {
         assert.closeTo(newCoords[0][1], 4639610.441991095, 0.00000001, 'An error occurred while transforming the coordinates.');
         assert.strictEqual(newCoords[0][2], 0, 'An error occurred while transforming the coordinates.');
     });
+
     it('gdaltransform 2', async function () {
         const coords = [
             [3021629.2074563554, 4639610.441991095],

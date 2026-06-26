@@ -20,6 +20,7 @@ describe('application / ogr2ogr', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('ogr2ogr', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {
@@ -45,6 +46,7 @@ describe('application / ogr2ogr', function () {
         const info3 = await Gdal.getInfo(firstDataset3);
         assert.strictEqual(info3.featureCount > 0, true, 'geojson file has no feature. (featureCount == 0)');
     });
+
     it('ogr2ogr fail', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {
@@ -60,6 +62,7 @@ describe('application / ogr2ogr', function () {
         return Gdal.ogr2ogr(firstDataset, ['-f', 'PCIDSK2']).then(() => { failed = false; }).catch(() => { failed = true; })
             .finally(() => { assert.strictEqual(failed, true, 'An error occurred'); });
     });
+
     it('ogr2ogr with config', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {

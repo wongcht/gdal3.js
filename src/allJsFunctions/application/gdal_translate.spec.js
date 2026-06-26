@@ -20,6 +20,7 @@ describe('application / gdal_translate', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('gdal_translate', async function () {
         let file = 'data/simple-polygon-line-point.tif';
         if (!isNode) {
@@ -41,6 +42,7 @@ describe('application / gdal_translate', function () {
         assert.strictEqual(firstDataset2.pointer > 0, true, 'An error occurred while converting the file. (ptr == 0)');
         assert.strictEqual(info2.bandCount === 4, true, `png file does not have four layers. (bandCount == ${info2.bandCount})`);
     });
+
     it('gdal_translate fail', async function () {
         let file = 'data/simple-polygon-line-point.tif';
         if (!isNode) {
@@ -58,6 +60,7 @@ describe('application / gdal_translate', function () {
         return Gdal.gdal_translate(firstDataset, ['-f', 'PNG2']).then(() => { failed = false; }).catch(() => { failed = true; })
             .finally(() => { assert.strictEqual(failed, true, 'An error occurred'); });
     });
+
     it('gdal_translate with config', async function () {
         let file = 'data/spaf27_epsg.tif';
         if (!isNode) {

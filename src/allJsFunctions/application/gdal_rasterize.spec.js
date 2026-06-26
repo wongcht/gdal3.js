@@ -20,6 +20,7 @@ describe('application / gdal_rasterize', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('gdal_rasterize', async function () {
         let file = 'data/simple-polygon-line-point.geojson';
         if (!isNode) {
@@ -41,6 +42,7 @@ describe('application / gdal_rasterize', function () {
         assert.strictEqual(firstDataset2.pointer > 0, true, 'An error occurred while converting the file. (ptr == 0)');
         assert.strictEqual(info2.bandCount === 4, true, `tif file does not have four layers. (bandCount == ${info2.bandCount})`);
     });
+
     it('gdal_rasterize fail', async function () {
         let file = 'data/simple-polygon-line-point.geojson';
         if (!isNode) {
@@ -58,6 +60,7 @@ describe('application / gdal_rasterize', function () {
         return Gdal.gdal_rasterize(firstDataset, ['-of', 'GTiff']).then(() => { failed = false; }).catch(() => { failed = true; })
             .finally(() => { assert.strictEqual(failed, true, 'An error occurred'); });
     });
+
     it('gdal_rasterize with config', async function () {
         let file = 'data/simple-polygon-line-point.geojson';
         if (!isNode) {

@@ -20,6 +20,7 @@ describe('application / ogrinfo', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('ogrinfo', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {

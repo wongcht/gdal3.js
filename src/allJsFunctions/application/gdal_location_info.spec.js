@@ -20,6 +20,7 @@ describe('application / gdal_location_info', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('gdal_location_info', async function () {
         let file = 'data/vfr_wall.tif';
         if (!isNode) {

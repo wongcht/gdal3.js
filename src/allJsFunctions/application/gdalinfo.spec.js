@@ -20,6 +20,7 @@ describe('application / gdalinfo', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('gdalinfo', async function () {
         let file = 'data/simple-polygon-line-point.tif';
         if (!isNode) {
