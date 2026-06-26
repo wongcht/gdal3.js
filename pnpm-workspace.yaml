@@ -1,4 +1,4 @@
 allowBuilds:
-  core-js: set this to true or false
-  phantomjs-prebuilt: set this to true or false
-  puppeteer: set this to true or false
+  core-js: true
+  phantomjs-prebuilt: true
+  puppeteer: true
