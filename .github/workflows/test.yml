@@ -1,0 +1,44 @@
+name: Test
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Cache native GDAL/WASM build
+        id: native-cache
+        uses: actions/cache@v6
+        with:
+          path: build/package
+          key: gdal-wasm-${{ hashFiles('Makefile', 'GDAL_EMCC_FLAGS.mk', '.github/workflows/test.yml') }}
+      - name: Install sqlite3
+        if: steps.native-cache.outputs.cache-hit != 'true'
+        run: sudo apt-get update && sudo apt-get install -y sqlite3
+      - name: Setup Emscripten SDK
+        if: steps.native-cache.outputs.cache-hit != 'true'
+        uses: emscripten-core/setup-emsdk@v16
+        with:
+          version: 6.0.1
+          actions-cache-folder: emsdk-cache
+      - name: Build native (GDAL -> WASM)
+        if: steps.native-cache.outputs.cache-hit != 'true'
+        run: pnpm run build-native
+      - name: Build JS bundle
+        run: pnpm run build-src
+      - name: Run Node tests
+        run: pnpm run test-node
+      - name: Run browser tests
+        run: pnpm run test-browser
+      - name: Merge coverage
+        run: pnpm run test-coverage
