@@ -20,6 +20,7 @@ describe('function / getOutputFiles', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('getOutputFiles', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {

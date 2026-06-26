@@ -20,6 +20,7 @@ describe('function / getFileBytes', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('getFileBytes', async function () {
         let file = 'data/simple-polygon-line-point.geojson';
         if (!isNode) {
@@ -36,6 +37,7 @@ describe('function / getFileBytes', function () {
         const fileBytes = await Gdal.getFileBytes('/input/simple-polygon-line-point.geojson');
         assert.strictEqual(fileBytes.length > 1000, true, `Wrong file size (file size: ${fileBytes.length})`);
     });
+
     it('getFileBytes object', async function () {
         let file = 'data/simple-polygon-line-point.geojson';
         if (!isNode) {
@@ -51,6 +53,7 @@ describe('function / getFileBytes', function () {
         const fileBytes = await Gdal.getFileBytes(outputPath);
         assert.strictEqual(fileBytes.length > 1000, true, `Wrong file size (file size: ${fileBytes.length})`);
     });
+
     it('getFileBytes null', async function () {
         const fileBytes = await Gdal.getFileBytes();
         assert.strictEqual(fileBytes.length, 0, `Wrong file size (file size: ${fileBytes.length})`);

@@ -20,6 +20,7 @@ describe('application / gdalwarp', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('gdalwarp', async function () {
         let file = 'data/simple-polygon-line-point.tif';
         if (!isNode) {
@@ -45,6 +46,7 @@ describe('application / gdalwarp', function () {
         assert.strictEqual(info2.projectionWkt.substr(info2.projectionWkt.length - 50).indexOf('AUTHORITY["EPSG","4326"]') !== -1, false, '4326 2');
         assert.strictEqual(info2.projectionWkt.substr(info2.projectionWkt.length - 50).indexOf('AUTHORITY["EPSG","3857"]') !== -1, true, '3857 2');
     });
+
     it('gdalwarp fail', async function () {
         let file = 'data/simple-polygon-line-point.tif';
         if (!isNode) {
@@ -63,6 +65,7 @@ describe('application / gdalwarp', function () {
         return Gdal.gdalwarp(firstDataset, []).then(() => { failed = false; }).catch(() => { failed = true; })
             .finally(() => { assert.strictEqual(failed, true, 'An error occurred'); });
     });
+
     it('gdalwarp with config', async function () {
         let file = 'data/simple-polygon-line-point.tif';
         if (!isNode) {

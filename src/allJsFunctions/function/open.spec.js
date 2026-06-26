@@ -20,6 +20,7 @@ describe('function / open', function () {
             Gdal = await initGdalJs({ path: '../package', useWorker: false });
         }
     });
+
     it('open array multiple', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {
@@ -71,6 +72,7 @@ describe('function / open', function () {
             assert.strictEqual(firstDataset.type === 'vector', true, 'No vector data in input file.');
         });
     }
+
     it('open vector', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {
@@ -83,6 +85,7 @@ describe('function / open', function () {
         assert.strictEqual(firstDataset.pointer > 0, true, 'An error occurred while opening the geojson file. (ptr == 0)');
         assert.strictEqual(firstDataset.type === 'vector', true, 'No vector data in input file.');
     });
+
     it('open with open options', async function () {
         let file = 'data/pts.csv';
         if (!isNode) {
@@ -100,6 +103,7 @@ describe('function / open', function () {
         assert.strictEqual(typeof result.features[0].properties.lat === 'number', true, 'Open option AUTODETECT_TYPE failed');
         assert.strictEqual(result.features[0].geometry !== null, true, 'Open options X_POSSIBLE_NAMES/Y_POSSIBLE_NAMES failed');
     });
+
     it('open raster', async function () {
         let file = 'data/simple-polygon-line-point.tif';
         if (!isNode) {
@@ -112,6 +116,7 @@ describe('function / open', function () {
         assert.strictEqual(firstDataset.pointer > 0, true, 'An error occurred while opening the tif file. (ptr == 0)');
         assert.strictEqual(firstDataset.type === 'raster', true, 'No raster data in input file.');
     });
+
     it('open fail', async function () {
         let file = 'data/unknown.geojson';
         if (!isNode) {
@@ -123,11 +128,13 @@ describe('function / open', function () {
         Gdal.open(file).then(() => { failed = false; }).catch(() => { failed = true; })
             .finally(() => { assert.strictEqual(failed, true, 'An error occurred'); });
     });
+
     it('open fail2', async function () {
         let failed = false;
         Gdal.open('/output/unknown').then(() => { failed = false; }).catch(() => { failed = true; })
             .finally(() => { assert.strictEqual(failed, true, 'An error occurred'); });
     });
+
     it('open local/real', async function () {
         let file = 'data/polygon-line-point.geojson';
         if (!isNode) {
