@@ -2,14 +2,18 @@
     <div id="app">
         <AppHeader />
         <Tab :options="['Input', 'Convert', 'Output']" default="Input" ref="tab">
-            <template slot="Input">
+            <template #Input>
                 <TabRadio :options="['File', 'Folder']" default="File">
-                    <InputFiles slot="File" :datasets="datasets" :datasetsInfo="datasetsInfo" :onFileChange="onFileChange" :deleteDataset="deleteDataset" />
-                    <InputFiles slot="Folder" isFolder :datasets="datasets" :datasetsInfo="datasetsInfo" :onFileChange="onFileChange" :deleteDataset="deleteDataset" />
+                    <template #File>
+                        <InputFiles :datasets="datasets" :datasetsInfo="datasetsInfo" :onFileChange="onFileChange" :deleteDataset="deleteDataset" />
+                    </template>
+                    <template #Folder>
+                        <InputFiles isFolder :datasets="datasets" :datasetsInfo="datasetsInfo" :onFileChange="onFileChange" :deleteDataset="deleteDataset" />
+                    </template>
                 </TabRadio>
                 <div class="center"><button @click="$refs.tab.value = 'Convert'">Convert Options ⮞</button></div>
             </template>
-            <template slot="Convert">
+            <template #Convert>
                 <div>
                     <label>Format (Required)</label>
                     <MultiSelect
@@ -44,7 +48,7 @@
                 </div>
                 <div class="center"><button @click="translate()">Convert ⮞</button></div>
             </template>
-            <template slot="Output">
+            <template #Output>
                 <OutputFiles :files="files" :downloadFile="downloadFile" />
             </template>
         </Tab>
@@ -54,7 +58,7 @@
             <li @click="$modal.show('supporteddrivers')">Formats</li>
             <li @click="$modal.show('releasenotes')" :title="projectNews[0].version+' - '+projectNews[0].date">{{ projectNews[0].version }}</li>
         </ul>
-        <modal name="about" adaptive scrollable height="auto">
+        <app-modal name="about" adaptive scrollable height="auto">
             <div class="right"><button class="close" @click="$modal.hide('about')">✖</button></div>
 
             <h2>{{ projectInfo.gui.name }} <span> {{ projectNews[0].version }}</span></h2>
@@ -87,14 +91,14 @@
                     </ul>
                 </div>
             </div>
-        </modal>
-        <modal name="releasenotes" adaptive scrollable height="auto" width="1000">
+        </app-modal>
+        <app-modal name="releasenotes" adaptive scrollable height="auto" width="1000">
             <div class="right"><button class="close" @click="$modal.hide('releasenotes')">✖</button></div>
 
             <h2>Release Notes</h2>
-            <template v-for="note in projectNews">
-                <h3 :key="note.version">{{ note.version }} <span class="right date">{{ note.date }}</span></h3>
-                <ul :key="note.date">
+            <template v-for="note in projectNews" :key="note.version">
+                <h3>{{ note.version }} <span class="right date">{{ note.date }}</span></h3>
+                <ul>
                     <li v-for="commit in note.commits" :key="commit.description">
                         {{ commit.description }}
                         <span class="right grid-list desktop">
@@ -104,8 +108,8 @@
                     </li>
                 </ul>
             </template>
-        </modal>
-        <modal name="supporteddrivers" adaptive scrollable height="auto" width="1000">
+        </app-modal>
+        <app-modal name="supporteddrivers" adaptive scrollable height="auto" width="1000">
             <div class="right"><button class="close" @click="$modal.hide('supporteddrivers')">✖</button></div>
 
             <div class="middle-search desktop"><input type="text" v-model="driverSearchText" placeholder="Search" /></div>
@@ -117,22 +121,23 @@
             <div class="grid-list-auto">
                 <a v-for="driver in gdalVectorDriversFiltered" :key="'v-'+driver.longName+driver.shortName" :title="getDriverDesc(driver)">{{ driver.shortName }}</a>
             </div>
-        </modal>
-        <modal  v-if="dsco" name="createoptions" class="light" adaptive scrollable height="auto">
+        </app-modal>
+        <app-modal  v-if="dsco" name="createoptions" class="light" adaptive scrollable height="auto">
             <div class="right"><button class="close" @click="$modal.hide('createoptions')">✖</button></div>
             <h4>Database/Dataset Creation Options <a v-if="selectedFormat && selectedFormat.helpUrl" :href="`https://gdal.org/${selectedFormat.helpUrl}`" class="info-color" target="_blank">🛈</a></h4>
             <AppForm :inputs="dsco" :prefix="drivers[0].type === 'vector' ? '-dsco' : '-co'" :self="this" />
-        </modal>
-        <modal  v-if="lco" name="layercreateoptions" class="light" adaptive scrollable height="auto">
+        </app-modal>
+        <app-modal  v-if="lco" name="layercreateoptions" class="light" adaptive scrollable height="auto">
             <div class="right"><button class="close" @click="$modal.hide('layercreateoptions')">✖</button></div>
             <h4>Layer Creation Options <a v-if="selectedFormat && selectedFormat.helpUrl" :href="`https://gdal.org/${selectedFormat.helpUrl}`" class="info-color" target="_blank">🛈</a></h4>
             <AppForm :inputs="lco" :self="this" prefix="-lco" />
-        </modal>
-        <loading :active.sync="isLoading" color="#007BFF" :width="150" :height="150" />
+        </app-modal>
+        <loading v-model:active="isLoading" color="#007BFF" :width="150" :height="150" />
     </div>
 </template>
 
 <script>
+import { toRaw } from 'vue';
 import Loading from 'vue-loading-overlay';
 import AppHeader from './components/Header.vue'
 import Tab from './components/Tab.vue'
@@ -146,7 +151,7 @@ import crs from './crs.json';
 import projectNews from '../../../.news.json';
 import projectInfo from '../../../.info.json';
 import './App.css';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import 'vue-loading-overlay/dist/css/index.css';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 
 let gdal;
@@ -289,7 +294,7 @@ export default {
             this.isLoading = true;
             let promises = [];
             let options = this.gdalParams;
-            this.datasets.forEach(d => promises.push(gdal[this.gdalFunction](d, options)));
+            this.datasets.forEach(d => promises.push(gdal[this.gdalFunction](toRaw(d), options)));
             Promise.allSettled(promises).then((results) => {
                 gdal.getOutputFiles().then(files => {
                     results.filter(r => r.status === 'rejected').forEach(({reason}) => {
@@ -338,7 +343,7 @@ export default {
             });
         },
         deleteDataset(dataset) {
-            gdal.close(dataset);
+            gdal.close(toRaw(dataset));
             let drivers = [];
             let datasets = this.datasets.filter(v => v !== dataset);
             if (datasets.length > 0) {

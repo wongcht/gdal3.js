@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
-import vue2 from '@vitejs/plugin-vue2'
+import vue from '@vitejs/plugin-vue'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 const gdal3LibPath = fileURLToPath(new URL('../../build/package/gdal3.js', import.meta.url))
@@ -15,7 +15,7 @@ export default defineConfig({
     include: ['gdal3-lib']
   },
   plugins: [
-    vue2(),
+    vue(),
     viteStaticCopy({
       targets: [
         { src: '../../build/package/gdal3.js', dest: 'package', rename: { stripBase: true } },
