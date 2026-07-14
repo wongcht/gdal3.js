@@ -115,7 +115,7 @@ export default function getInfo(dataset) {
             for (let i = 0; i < layerCount; i += 1) {
                 const layerPtr = GDALFunctions.OGR_DS_GetLayer(dataset.pointer, i);
                 const layerName = GDALFunctions.OGR_L_GetName(layerPtr);
-                const featureCount = GDALFunctions.OGR_L_GetFeatureCount(layerPtr, 1);
+                const featureCount = Number(GDALFunctions.OGR_L_GetFeatureCount(layerPtr, 1));
                 layers.push({
                     name: layerName,
                     featureCount,

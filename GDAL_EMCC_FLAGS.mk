@@ -126,5 +126,8 @@ GDAL_EMCC_FLAGS += -s EXPORTED_RUNTIME_METHODS="[\
   'WORKERFS',\
   'NODEFS',\
   'MEMFS',\
-  'addFunction'\
+  'addFunction',\
+  'HEAP32',\
+  'HEAPU32',\
+  'HEAPF64'\
 ]"
