@@ -1,3 +1,7 @@
+# backward compatibility for pnpm v10 used in dependabot
+packages:
+  - "."
+
 allowBuilds:
   core-js: true
   phantomjs-prebuilt: true
