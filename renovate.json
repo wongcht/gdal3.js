@@ -1,0 +1,92 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "GDAL version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["GDAL_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "OSGeo/gdal",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    },
+    {
+      "customType": "regex",
+      "description": "GEOS version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["GEOS_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "libgeos/geos",
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "description": "PROJ version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["PROJ_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "OSGeo/PROJ",
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "description": "zlib version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["ZLIB_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "madler/zlib",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    },
+    {
+      "customType": "regex",
+      "description": "libtiff version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["TIFF_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "libtiff/libtiff",
+      "datasourceTemplate": "gitlab-tags",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    },
+    {
+      "customType": "regex",
+      "description": "libjpeg-turbo version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["JPEG_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "libjpeg-turbo/libjpeg-turbo",
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "description": "libgeotiff version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["GEOTIFF_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "OSGeo/libgeotiff",
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "description": "zstd version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["ZSTD_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "facebook/zstd",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    },
+    {
+      "customType": "regex",
+      "description": "LERC version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["LERC_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "Esri/lerc",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    },
+    {
+      "customType": "regex",
+      "description": "libwebp version pinned in Makefile",
+      "managerFilePatterns": ["/^Makefile$/"],
+      "matchStrings": ["WEBP_VERSION = (?<currentValue>\\S+)"],
+      "depNameTemplate": "webmproject/libwebp",
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    }
+  ]
+}
