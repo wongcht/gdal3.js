@@ -11,13 +11,15 @@ jobs:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
         with:
-          version: 11.9.0
+          version: 11.13.0
       - uses: actions/setup-node@v6
         with:
           node-version: 26
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
       - name: Cache native GDAL/WASM build
         id: native-cache
         uses: actions/cache@v6
