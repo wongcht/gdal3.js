@@ -11,6 +11,10 @@ module.exports = {
             { from: '../../build/package/gdal3WebAssembly.data', to: 'package' }
         ]
       })
-    ]
+    ],
+     externals: {
+       'node:crypto': 'commonjs crypto',
+       'node:fs': 'commonjs fs'
+   }
   }
 }
