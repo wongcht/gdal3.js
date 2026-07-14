@@ -5,11 +5,11 @@
             <input v-if="input.type === 'string'" class="input" :title="inputInfo(input)" :value="params.in[input.name]" @input="(event) => li(input.name, event.target.value)" />
             <input v-if="input.type === 'integer' || input.type === 'int' || input.type === 'unsigned int'" class="input" :title="inputInfo(input)" type="number" :value="params.in[input.name]" @input="(event) => li(input.name, event.target.value)" />
             <input v-if="input.type === 'float'" class="input" :title="inputInfo(input)" type="number" :value="params.in[input.name]" @input="(event) => li(input.name, event.target.value)" />
-            <MultiSelect v-if="input.type === 'string-select'" :value="params.in[input.name]" @input="(value) => li(input.name, value, input.type)"
+            <MultiSelect v-if="input.type === 'string-select'" :modelValue="params.in[input.name]" @update:modelValue="(value) => li(input.name, value, input.type)"
                 :options="input.options" :title="inputInfo(input)"
                 :showLabels="false" placeholder="Select one" :maxHeight="500"
             />
-            <MultiSelect v-if="input.type === 'boolean'" :value="params.in[input.name]" @input="(value) => li(input.name, value, input.type)"
+            <MultiSelect v-if="input.type === 'boolean'" :modelValue="params.in[input.name]" @update:modelValue="(value) => li(input.name, value, input.type)"
                 :options="['YES', 'NO']" :title="inputInfo(input)"
                 :showLabels="false" placeholder="Select one" :maxHeight="500"
             />

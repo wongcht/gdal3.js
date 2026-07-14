@@ -1,17 +1,15 @@
-import Vue from 'vue'
-import Icon from 'vue-awesome/components/Icon'
+import { createApp } from 'vue'
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
-import VModal from 'vue-js-modal'
 import MultiSelect from 'vue-multiselect'
 import App from './App.vue'
+import Modal from './components/Modal.vue'
+import { showModal, hideModal } from './modal'
 
-Vue.config.productionTip = false
-Vue.use(VueToast, { position: 'top-right', duration: 5000 });
-Vue.component('v-icon', Icon);
-Vue.component('MultiSelect', MultiSelect)
-Vue.use(VModal)
+const app = createApp(App)
+app.use(VueToast, { position: 'top-right', duration: 5000 });
+app.component('MultiSelect', MultiSelect)
+app.component('app-modal', Modal)
+app.config.globalProperties.$modal = { show: showModal, hide: hideModal }
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+app.mount('#app')

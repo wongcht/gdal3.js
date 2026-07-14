@@ -11,7 +11,7 @@
                     <p class="title">{{dataset.path}}</p>
                     <p class="desc">{{datasetsInfo[dataset.pointer].driverLongName}} ({{datasetsInfo[dataset.pointer].type}})</p>
                 </div>
-                <div @click="deleteDataset(dataset)" class="fileAction"><v-icon style="color: red;" name="trash"/></div>
+                <div @click="deleteDataset(dataset)" class="fileAction"><Trash2 style="color: red;" /></div>
             </div>
             <div class="tab-content">
                 <pre v-html="getCode(dataset)" />
@@ -22,10 +22,13 @@
 
 <script>
 import { syntaxHighlight } from '../utils';
-import 'vue-awesome/icons/trash';
+import { Trash2 } from '@lucide/vue';
 
 export default {
     name: 'ComponentInputFiles',
+    components: {
+        Trash2,
+    },
     props: {
         datasets: Array,
         datasetsInfo: Object,

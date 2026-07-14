@@ -11,7 +11,7 @@ const nodeLibs = {
     string_decoder: `export default {};`,
     buffer: `export default {};`,
     crypto: `export default {};`,
-    stream: `export default {};`
+    stream: `export default {};`,
 };
 
 export default [

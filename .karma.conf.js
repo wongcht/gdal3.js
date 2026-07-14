@@ -4,7 +4,7 @@ module.exports = function(config) {
     basePath: '',
     plugins: [
         'karma-mocha', 'karma-chai', 'karma-coverage', 'karma-coverage-istanbul-reporter',
-        'karma-chrome-launcher', 'karma-firefox-launcher', 'karma-phantomjs-launcher',
+        'karma-chrome-launcher', 'karma-firefox-launcher',
     ],
     frameworks: ['mocha', 'chai'],
 

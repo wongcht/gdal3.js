@@ -7,17 +7,20 @@
                     <p class="title">{{ getFileTitle(file.path) }}</p>
                     <p class="desc">{{ getFileSize(file.size) }}</p>
                 </div>
-                <div class="fileAction"><v-icon style="color: black;" name="download"/></div>
+                <div class="fileAction"><Download style="color: black;" /></div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import 'vue-awesome/icons/download';
+import { Download } from '@lucide/vue';
 
 export default {
     name: 'ComponentOutputFiles',
+    components: {
+        Download,
+    },
     props: {
         files: Array,
         downloadFile: Function,
