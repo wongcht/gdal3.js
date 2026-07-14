@@ -49,7 +49,7 @@
             </template>
         </Tab>
         <ul class="appinfo">
-            <li><a href="https://github.com/bugra9/gdal3.js" target="_blank"><img src="github.png" /></a></li>
+            <li><a href="https://github.com/bugra9/gdal3.js" target="_blank"><img src="/github.png" /></a></li>
             <li @click="$modal.show('about')">About</li>
             <li @click="$modal.show('supporteddrivers')">Formats</li>
             <li @click="$modal.show('releasenotes')" :title="projectNews[0].version+' - '+projectNews[0].date">{{ projectNews[0].version }}</li>
@@ -141,7 +141,7 @@ import InputFiles from './components/InputFiles.vue'
 import OutputFiles from './components/OutputFiles.vue'
 import AppForm from './components/Form.vue'
 import { split } from './utils';
-import initGdalJs from '../../../build/package/gdal3';
+import initGdalJs from 'gdal3-lib';
 import crs from './crs.json';
 import projectNews from '../../../.news.json';
 import projectInfo from '../../../.info.json';
