@@ -29,9 +29,6 @@ export default defineConfig({
     emptyOutDir: true,
     commonjsOptions: {
       include: [/build\/package\/gdal3\.js/, /node_modules/]
-    },
-    rollupOptions: {
-      external: ['node:crypto', 'node:fs']
     }
   }
 })
