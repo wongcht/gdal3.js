@@ -52,7 +52,7 @@
         "@babel/plugin-transform-runtime": "^7.23.4",
         "@babel/preset-env": "^7.23.3",
         "@babel/register": "^7.22.15",
-        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-babel": "^7.0.0",
         "@rollup/plugin-commonjs": "^25.0.7",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-virtual": "^3.0.2",
