@@ -1,0 +1,32 @@
+name: Lint app-gui
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - apps/app-gui/**
+      - .github/workflows/lint-gui.yml
+  pull_request:
+    paths:
+      - apps/app-gui/**
+      - .github/workflows/lint-gui.yml
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/app-gui
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: pnpm
+          cache-dependency-path: apps/app-gui/pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-workspace
+      - name: Run ESLint
+        run: pnpm run lint
