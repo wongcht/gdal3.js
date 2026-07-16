@@ -239,7 +239,7 @@ $(ROOT_DIR)/lib/libsqlite3.a: $(SQLITE3_SRC)/Makefile
 
 $(SQLITE3_SRC)/Makefile: $(ROOT_DIR)/lib/libz.a $(SQLITE3_SRC)/configure
 	cd $(SQLITE3_SRC); \
-	$(EMCONFIGURE) ./configure $(PREFIX) --enable-shared=no \
+	$(EMCONFIGURE) ./configure $(PREFIX) --disable-shared \
 	CFLAGS="-I$(ROOT_DIR)/include -DSQLITE_DISABLE_LFS -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_JSON1 -DSQLITE_THREADSAFE=0 -DSQLITE_ENABLE_NORMALIZE" \
 	CPPFLAGS="-I$(ROOT_DIR)/include" \
 	LDFLAGS="-L$(ROOT_DIR)/lib";
