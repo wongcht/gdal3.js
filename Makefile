@@ -1,6 +1,6 @@
 GDAL_VERSION = 3.8.4
 SPATIALITE_VERSION = 5.1.0
-SQLITE_VERSION = 3450100
+SQLITE_VERSION = 3530300
 GEOS_VERSION = 3.12.1
 PROJ_VERSION = 9.8.1
 ZLIB_VERSION = 1.3.2
@@ -13,7 +13,7 @@ WEBP_VERSION = 1.3.2
 EXPAT_VERSION = 2.6.0
 ICONV_VERSION = 1.17
 
-SQLITE_URL = "https://www.sqlite.org/2024/sqlite-autoconf-$(SQLITE_VERSION).tar.gz"
+SQLITE_URL = "https://www.sqlite.org/2026/sqlite-autoconf-$(SQLITE_VERSION).tar.gz"
 PROJ_URL = "http://download.osgeo.org/proj/proj-$(PROJ_VERSION).tar.gz"
 GEOS_URL = "http://download.osgeo.org/geos/geos-$(GEOS_VERSION).tar.bz2"
 SPATIALITE_URL = "http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-$(SPATIALITE_VERSION).tar.gz"
