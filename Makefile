@@ -368,8 +368,7 @@ $(ROOT_DIR)/lib/libwebp.a: $(WEBP_SRC)/Makefile
 
 $(WEBP_SRC)/Makefile: $(WEBP_SRC)/configure
 	cd $(WEBP_SRC); \
-    sed -i 's/SUBDIRS += examples//g' ./Makefile.am; \
-    touch aclocal.m4 configure Makefile.in; \
+    sed -i -E 's/^(SUBDIRS = .*) examples$$/\1/' Makefile.in; \
 	$(EMCONFIGURE) ./configure $(PREFIX) --enable-shared=no;
 
 $(WEBP_SRC)/configure:
