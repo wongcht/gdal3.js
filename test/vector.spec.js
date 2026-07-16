@@ -9,7 +9,11 @@ if (isNode) assert = require('chai').assert;
 else assert = chai.assert;
 
 const ignoredInputFormats = [''];
-const ignoredOutputFormats = ['GeoJSON', 'S57', 'PDS4', 'PDF', 'PGDUMP', 'OpenFileGDB'];
+const ignoredOutputFormats = [
+    'GeoJSON', 'S57', 'PDS4', 'PDF', 'PGDUMP', 'OpenFileGDB',
+    // Fixed CAD schema: rejects the generic test fixture's attribute fields.
+    'DGN', 'DXF',
+];
 const ignoredParams = [
     'ESRI Shapefile-SHPT',
     'CSV',
@@ -25,7 +29,7 @@ const ignoredParams = [
 ];
 
 const suffixes = {
-    'GPX': {file: 'line', inputParams: ['routes']},
+    'GPX': {file: 'line', inputParams: ['routes'], outputParams: ['-dsco', 'GPX_USE_EXTENSIONS=YES']},
     'ESRI Shapefile': {file: 'line'},
     'WAsP': {file: 'line', outputParams: ['-lco', 'WASP_FIELDS=z']},
     'Geoconcept': {file: 'line'},

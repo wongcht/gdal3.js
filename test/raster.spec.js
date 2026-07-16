@@ -12,6 +12,8 @@ const ignoredInputFormats = [''];
 const ignoredOutputFormats = [
     'GTiff', 'NITF', 'DTED', 'SRTMHGT', 'ISIS3', 'KMLSUPEROVERLAY', 'PDF', 'BYN',
     'ADRG', 'LCP', 'BLX', 'SAGA', 'USGSDEM', 'VRT', 'COG', 'OpenFileGDB',
+    // Can't assign a spatial reference for the test source's CRS (driver-specific SRS catalog limitation).
+    'MiraMonRaster',
 ];
 const ignoredParams = [
     'JPEG-COLOR_TRANSFORM',
@@ -24,6 +26,11 @@ const ignoredParams = [
     'HF2-COMPRESS',
     'JPEG-LOSSLESS_COPY',
     'WEBP-LOSSLESS_COPY',
+    // Requires the companion ARRAY_NAME option, which the generic option-combination
+    // generator below has no way to supply.
+    'Zarr-APPEND_SUBDATASET',
+    // Requires the PARQUET driver, which isn't built into this wasm.
+    'Zarr-CONVERT_TO_KERCHUNK_PARQUET_REFERENCE',
 ];
 
 const suffixes = {

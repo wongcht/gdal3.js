@@ -62,7 +62,10 @@ describe('application / gdalwarp', function () {
         assert.strictEqual(info.projectionWkt.substr(info.projectionWkt.length - 50).indexOf('AUTHORITY["EPSG","4326"]') !== -1, true, '4326');
         assert.strictEqual(info.projectionWkt.substr(info.projectionWkt.length - 50).indexOf('AUTHORITY["EPSG","3857"]') !== -1, false, '3857');
         let failed = false;
-        return Gdal.gdalwarp(firstDataset, []).then(() => { failed = false; }).catch(() => { failed = true; })
+        // Empty options no longer fail as of GDAL 3.13 (GDALWarp() now defaults
+        // silently instead of requiring an explicit format/target), so use an
+        // unrecognised flag to reliably exercise the failure path instead.
+        return Gdal.gdalwarp(firstDataset, ['-not_a_real_gdalwarp_flag']).then(() => { failed = false; }).catch(() => { failed = true; })
             .finally(() => { assert.strictEqual(failed, true, 'An error occurred'); });
     });
 

@@ -22,6 +22,10 @@ describe('application / gdal_location_info', function () {
     });
 
     it('gdal_location_info', async function () {
+        // vfr_wall.tif is 61MB; fetching/decoding it in a headless browser under CI
+        // load can exceed mocha's default 2000ms test timeout even though the
+        // operation itself only takes tens of milliseconds once loaded.
+        this.timeout(15000);
         let file = 'data/vfr_wall.tif';
         if (!isNode) {
             const fileData = await fetch(file);
