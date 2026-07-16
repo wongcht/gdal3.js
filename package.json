@@ -54,7 +54,7 @@
         "@babel/register": "^7.22.15",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-commonjs": "^25.0.7",
-        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-node-resolve": "^16.0.0",
         "@rollup/plugin-virtual": "^3.0.2",
         "@types/detect-node": "^2.0.2",
         "@babel/eslint-parser": "^7.23.3",
