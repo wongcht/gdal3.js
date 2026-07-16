@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "enabledManagers": ["custom.regex"],
   "customManagers": [
     {
       "customType": "regex",
@@ -40,7 +41,7 @@
       "customType": "regex",
       "description": "libtiff version pinned in Makefile",
       "managerFilePatterns": ["/^Makefile$/"],
-      "matchStrings": ["TIFF_VERSION = (?<currentValue>\\S+)"],
+      "matchStrings": ["/^TIFF_VERSION = (?<currentValue>\\S+)/m"],
       "depNameTemplate": "libtiff/libtiff",
       "datasourceTemplate": "gitlab-tags",
       "extractVersionTemplate": "^v(?<version>.*)$"
