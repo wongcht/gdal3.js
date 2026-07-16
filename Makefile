@@ -1,6 +1,6 @@
 GDAL_VERSION = 3.13.1
 SPATIALITE_VERSION = 5.1.0
-SQLITE_VERSION = 3450100
+SQLITE_VERSION = 3530300
 GEOS_VERSION = 3.14.1
 PROJ_VERSION = 9.8.1
 ZLIB_VERSION = 1.3.2
@@ -13,7 +13,7 @@ WEBP_VERSION = 1.3.2
 EXPAT_VERSION = 2.8.2
 ICONV_VERSION = 1.17
 
-SQLITE_URL = "https://www.sqlite.org/2024/sqlite-autoconf-$(SQLITE_VERSION).tar.gz"
+SQLITE_URL = "https://www.sqlite.org/2026/sqlite-autoconf-$(SQLITE_VERSION).tar.gz"
 PROJ_URL = "http://download.osgeo.org/proj/proj-$(PROJ_VERSION).tar.gz"
 GEOS_URL = "http://download.osgeo.org/geos/geos-$(GEOS_VERSION).tar.bz2"
 SPATIALITE_URL = "http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-$(SPATIALITE_VERSION).tar.gz"
@@ -239,8 +239,8 @@ $(ROOT_DIR)/lib/libsqlite3.a: $(SQLITE3_SRC)/Makefile
 
 $(SQLITE3_SRC)/Makefile: $(ROOT_DIR)/lib/libz.a $(SQLITE3_SRC)/configure
 	cd $(SQLITE3_SRC); \
-	$(EMCONFIGURE) ./configure $(PREFIX) --enable-shared=no \
-	CFLAGS="-I$(ROOT_DIR)/include -DSQLITE_DISABLE_LFS -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_JSON1 -DSQLITE_THREADSAFE=0 -DSQLITE_ENABLE_NORMALIZE" \
+	$(EMCONFIGURE) ./configure $(PREFIX) --disable-shared \
+	CFLAGS="-I$(ROOT_DIR)/include -DSQLITE_DISABLE_LFS -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_RTREE -DSQLITE_THREADSAFE=0 -DSQLITE_ENABLE_NORMALIZE" \
 	CPPFLAGS="-I$(ROOT_DIR)/include" \
 	LDFLAGS="-L$(ROOT_DIR)/lib";
 
