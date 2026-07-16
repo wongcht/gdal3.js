@@ -9,7 +9,7 @@ JPEG_VERSION = 3.2.0
 GEOTIFF_VERSION = 1.7.4
 ZSTD_VERSION = 1.5.7
 LERC_VERSION = 4.1.1
-WEBP_VERSION = 1.3.2
+WEBP_VERSION = 1.6.0
 EXPAT_VERSION = 2.8.2
 ICONV_VERSION = 1.17
 
@@ -368,7 +368,7 @@ $(ROOT_DIR)/lib/libwebp.a: $(WEBP_SRC)/Makefile
 
 $(WEBP_SRC)/Makefile: $(WEBP_SRC)/configure
 	cd $(WEBP_SRC); \
-    sed -i 's/SUBDIRS += examples//g' ./Makefile.am; \
+    sed -i -E 's/^(SUBDIRS = .*) examples$$/\1/' Makefile.in; \
 	$(EMCONFIGURE) ./configure $(PREFIX) --enable-shared=no;
 
 $(WEBP_SRC)/configure:
