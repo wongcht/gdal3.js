@@ -9,6 +9,8 @@ updates:
         patterns:
           - "*"
     open-pull-requests-limit: 10
+    cooldown:
+      default-days: 1
 
   - package-ecosystem: "npm"
     directory: "/apps/app-gui"
@@ -19,6 +21,8 @@ updates:
         patterns:
           - "*"
     open-pull-requests-limit: 10
+    cooldown:
+      default-days: 1
 
   - package-ecosystem: "github-actions"
     directory: "/"
