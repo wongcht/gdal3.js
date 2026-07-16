@@ -11,7 +11,7 @@ ZSTD_VERSION = 1.5.7
 LERC_VERSION = 4.1.1
 WEBP_VERSION = 1.6.0
 EXPAT_VERSION = 2.8.2
-ICONV_VERSION = 1.17
+ICONV_VERSION = 1.19
 
 SQLITE_URL = "https://www.sqlite.org/2026/sqlite-autoconf-$(SQLITE_VERSION).tar.gz"
 PROJ_URL = "http://download.osgeo.org/proj/proj-$(PROJ_VERSION).tar.gz"
