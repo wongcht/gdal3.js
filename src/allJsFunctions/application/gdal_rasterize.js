@@ -47,13 +47,18 @@ export default function gdal_rasterize(dataset, options = [], outputName = null)
 
         const finalOutputName = outputName || dataset.path.split('.', 1)[0];
         const filePath = `${OUTPUTPATH}/${finalOutputName}.${ext}`;
-        const datasetPtr = GDALFunctions.GDALRasterize(filePath, null, dataset.pointer, optionsPtr, null);
-        const outputFiles = getFileListFromDataset(datasetPtr);
-        GDALFunctions.GDALRasterizeOptionsFree(optionsPtr);
+        // optionsPtr is NULL when the option arguments themselves failed to parse.
+        // Calling GDALRasterize() with NULL options runs it with all defaults instead of
+        // surfacing that parse failure, so skip straight to rejecting in that case.
+        const datasetPtr = optionsPtr
+            ? GDALFunctions.GDALRasterize(filePath, null, dataset.pointer, optionsPtr, null)
+            : null;
+        const outputFiles = datasetPtr ? getFileListFromDataset(datasetPtr) : [];
+        if (optionsPtr) GDALFunctions.GDALRasterizeOptionsFree(optionsPtr);
         clearOptions(optStr);
         GDALFunctions.GDALClose(datasetPtr);
 
-        if (GDALFunctions.CPLGetLastErrorNo() >= 3) {
+        if (!optionsPtr || GDALFunctions.CPLGetLastErrorType() >= 3) {
             const error = getGdalError();
             reject(error);
         } else {

@@ -51,13 +51,18 @@ export default function gdalwarp(dataset, options = [], outputName = null) {
 
         const finalOutputName = outputName || dataset.path.split('.', 1)[0];
         const filePath = `${OUTPUTPATH}/${finalOutputName}.${ext}`;
-        const datasetPtr = GDALFunctions.GDALWarp(filePath, null, 1, datasetList, translateOptionsPtr, null);
-        const outputFiles = getFileListFromDataset(datasetPtr);
-        GDALFunctions.GDALWarpAppOptionsFree(translateOptionsPtr);
+        // translateOptionsPtr is NULL when the option arguments themselves failed to parse.
+        // Calling GDALWarp() with NULL options runs it with all defaults instead of
+        // surfacing that parse failure, so skip straight to rejecting in that case.
+        const datasetPtr = translateOptionsPtr
+            ? GDALFunctions.GDALWarp(filePath, null, 1, datasetList, translateOptionsPtr, null)
+            : null;
+        const outputFiles = datasetPtr ? getFileListFromDataset(datasetPtr) : [];
+        if (translateOptionsPtr) GDALFunctions.GDALWarpAppOptionsFree(translateOptionsPtr);
         clearOptions(optStr);
         GDALFunctions.GDALClose(datasetPtr);
 
-        if (GDALFunctions.CPLGetLastErrorNo() >= 3) {
+        if (!translateOptionsPtr || GDALFunctions.CPLGetLastErrorType() >= 3) {
             const error = getGdalError();
             reject(error);
         } else {

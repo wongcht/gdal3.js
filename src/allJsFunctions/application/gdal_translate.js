@@ -47,13 +47,18 @@ export default function gdal_translate(dataset, options = [], outputName = null)
 
         const finalOutputName = outputName || dataset.path.split('.', 1)[0];
         const filePath = `${OUTPUTPATH}/${finalOutputName}.${ext}`;
-        const datasetPtr = GDALFunctions.GDALTranslate(filePath, dataset.pointer, translateOptionsPtr, null);
-        const outputFiles = getFileListFromDataset(datasetPtr);
-        GDALFunctions.GDALTranslateOptionsFree(translateOptionsPtr);
+        // translateOptionsPtr is NULL when the option arguments themselves failed to parse.
+        // Calling GDALTranslate() with NULL options runs it with all defaults instead of
+        // surfacing that parse failure, so skip straight to rejecting in that case.
+        const datasetPtr = translateOptionsPtr
+            ? GDALFunctions.GDALTranslate(filePath, dataset.pointer, translateOptionsPtr, null)
+            : null;
+        const outputFiles = datasetPtr ? getFileListFromDataset(datasetPtr) : [];
+        if (translateOptionsPtr) GDALFunctions.GDALTranslateOptionsFree(translateOptionsPtr);
         clearOptions(optStr);
         GDALFunctions.GDALClose(datasetPtr);
 
-        if (GDALFunctions.CPLGetLastErrorNo() >= 3) {
+        if (!translateOptionsPtr || GDALFunctions.CPLGetLastErrorType() >= 3) {
             const error = getGdalError();
             reject(error);
         } else {

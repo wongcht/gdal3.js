@@ -34,7 +34,7 @@ export default function ogrinfo(dataset, options = []) {
         GDALFunctions.GDALVectorInfoOptionsFree(gdalInfoOptionsPtr);
         clearOptions(optStr);
 
-        if (GDALFunctions.CPLGetLastErrorNo() >= 3) {
+        if (GDALFunctions.CPLGetLastErrorType() >= 3) {
             const error = getGdalError();
             reject(error);
         } else {

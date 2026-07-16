@@ -33,7 +33,7 @@ export default function gdalinfo(dataset, options = []) {
         GDALFunctions.GDALInfoOptionsFree(gdalInfoOptionsPtr);
         clearOptions(optStr);
 
-        if (GDALFunctions.CPLGetLastErrorNo() >= 3) {
+        if (GDALFunctions.CPLGetLastErrorType() >= 3) {
             const error = getGdalError();
             reject(error);
         } else {

@@ -56,14 +56,19 @@ export default function ogr2ogr(dataset, options = [], outputName = null) {
 
         const finalOutputName = outputName || dataset.path.split('.', 1)[0];
         const filePath = `${OUTPUTPATH}/${finalOutputName}.${ext}`;
-        const datasetPtr = GDALFunctions.GDALVectorTranslate(filePath, null, 1, datasetList, translateOptionsPtr, null);
-        const outputFiles = getFileListFromDataset(datasetPtr);
+        // translateOptionsPtr is NULL when the option arguments themselves failed to parse.
+        // Calling GDALVectorTranslate() with NULL options runs it with all defaults instead of
+        // surfacing that parse failure, so skip straight to rejecting in that case.
+        const datasetPtr = translateOptionsPtr
+            ? GDALFunctions.GDALVectorTranslate(filePath, null, 1, datasetList, translateOptionsPtr, null)
+            : null;
+        const outputFiles = datasetPtr ? getFileListFromDataset(datasetPtr) : [];
 
-        GDALFunctions.GDALVectorTranslateOptionsFree(translateOptionsPtr);
+        if (translateOptionsPtr) GDALFunctions.GDALVectorTranslateOptionsFree(translateOptionsPtr);
         clearOptions(optStr);
         GDALFunctions.GDALClose(datasetPtr);
 
-        if (GDALFunctions.CPLGetLastErrorNo() >= 3) {
+        if (!translateOptionsPtr || GDALFunctions.CPLGetLastErrorType() >= 3) {
             const error = getGdalError();
             reject(error);
         } else {
