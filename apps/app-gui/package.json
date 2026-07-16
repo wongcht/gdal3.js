@@ -17,10 +17,10 @@
     "vue-toast-notification": "^3.1.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.7",
-    "eslint": "^8.54.0",
-    "eslint-plugin-vue": "^9.18.1",
-    "vite": "^7.3.6",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "eslint": "^10.7.0",
+    "eslint-plugin-vue": "^10.9.2",
+    "vite": "^8.1.4",
     "vite-plugin-static-copy": "^4.1.1"
   },
   "eslintConfig": {
