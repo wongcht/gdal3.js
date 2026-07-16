@@ -13,7 +13,9 @@ function xmlToJs(data) {
                 return tempJs.elements[0].elements.map((o) => {
                     const temp = o.attributes;
                     if (o.elements && o.elements.length > 0) {
-                        temp.options = o.elements.map((o2) => o2.elements[0].text);
+                        temp.options = o.elements
+                            .filter((o2) => o2.elements && o2.elements[0])
+                            .map((o2) => o2.elements[0].text);
                     }
                     return temp;
                 });
