@@ -163,7 +163,7 @@ $(GEOS_SRC)/build/Makefile: $(GEOS_SRC)/CMakeLists.txt
 	cd $(GEOS_SRC); \
     mkdir build; \
 	cd build; \
-	$(EMCMAKE) cmake .. $(PREFIX_CMAKE) -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF;
+	$(EMCMAKE) cmake .. $(PREFIX_CMAKE) -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DBUILD_GEOSOP=OFF;
 
 $(GEOS_SRC)/CMakeLists.txt:
 	mkdir -p $(SRC_DIR); \
