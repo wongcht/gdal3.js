@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@lucide/vue": "^1.24.0",
-    "vue": "^3.5.39",
+    "vue": "^3.5.40",
     "vue-loading-overlay": "^6.0.6",
     "vue-multiselect": "^3.5.0",
     "vue-toast-notification": "^3.1.3"
@@ -22,7 +22,7 @@
     "eslint": "^10.7.0",
     "eslint-plugin-vue": "^10.9.2",
     "globals": "^17.7.0",
-    "vite": "^8.1.4",
+    "vite": "^8.1.5",
     "vite-plugin-static-copy": "^4.1.1"
   }
 }
