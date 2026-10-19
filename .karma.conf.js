@@ -3,12 +3,14 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     plugins: [
-        'karma-mocha', 'karma-chai', 'karma-coverage', 'karma-coverage-istanbul-reporter',
+        'karma-mocha', 'karma-coverage', 'karma-coverage-istanbul-reporter',
         'karma-chrome-launcher', 'karma-firefox-launcher',
     ],
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha'],
 
     files: [
+      {pattern: 'node_modules/chai/index.js', included: false, served: true, watched: false, nocache: true},
+      {pattern: 'test/karma-chai.js', type: 'module', included: true, served: true, watched: false, nocache: true},
       {pattern: 'build/package/gdal3.coverage.js', included: true, served: true, watched: false, nocache: true},
       {pattern: 'build/package/gdal3WebAssembly.js', included: false, served: true, watched: false, nocache: true},
       {pattern: 'build/package/gdal3WebAssembly.wasm', included: false, served: true, watched: false, nocache: true},
