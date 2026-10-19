@@ -1,0 +1,110 @@
+import { FlatCompat } from '@eslint/eslintrc';
+import mocha from 'eslint-plugin-mocha';
+import globals from 'globals';
+
+const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
+
+export default [
+    { ignores: ['**/*', '!src/', '!src/**'] },
+    { linterOptions: { reportUnusedDisableDirectives: 'off' } },
+    ...compat.extends('airbnb-base'),
+    mocha.configs.recommended,
+    {
+        languageOptions: {
+            sourceType: 'module',
+            globals: {
+                ...globals.browser,
+                window: false,
+                initGdalJs: true,
+                chai: false,
+            },
+        },
+        rules: {
+            "max-len": [
+                2,
+                {
+                    "code": 125,
+                    "tabWidth": 4,
+                    "ignoreUrls": true,
+                    "ignoreStrings": true,
+                    "ignoreTemplateLiterals": true
+            }
+            ],
+            "import/extensions": [
+                "error",
+                "always",
+                {
+                    "js": "never",
+                    "vue": "never"
+            }
+            ],
+            "indent": [
+                2,
+                4,
+                {
+                    "SwitchCase": 1
+            }
+            ],
+            "no-console": [
+                "error",
+                {
+                    "allow": [
+                        "warn",
+                        "error",
+                        "info",
+                        "debug"
+                    ]
+            }
+            ],
+            "no-param-reassign": [
+                "error",
+                {
+                    "props": false
+            }
+            ],
+            "no-mixed-operators": [
+                "error",
+                {
+                    "allowSamePrecedence": true
+            }
+            ],
+            "no-return-assign": [
+                "error",
+                "except-parens"
+            ],
+            "import/no-cycle": 0,
+            "prefer-destructuring": [
+                "error",
+                {
+                    "object": false,
+                    "array": false
+            }
+            ],
+            "lines-between-class-members": [
+                "error",
+                "always",
+                {
+                    "exceptAfterSingleLine": true
+            }
+            ],
+            "no-unused-expressions": [
+                "error",
+                {
+                    "allowShortCircuit": true,
+                    "allowTernary": true
+            }
+            ],
+            "prefer-arrow-callback": 0,
+            "mocha/prefer-arrow-callback": 2,
+            "import/no-unresolved": [
+                2,
+                {
+                    "ignore": [
+                        "\\/gdal3.coverage$",
+                        "\\/gdal3WebAssembly.js$"
+                    ]
+            }
+            ]
+        },
+    },
+];
