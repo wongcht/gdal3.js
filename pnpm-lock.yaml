@@ -50,7 +50,7 @@ importers:
         version: 2.0.2
       babel-loader:
         specifier: ^9.1.3
-        version: 9.2.1(@babel/core@7.29.7(supports-color@8.1.1))(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3))
+        version: 9.2.1(@babel/core@7.29.7(supports-color@8.1.1))(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3))
       babel-polyfill:
         specifier: ^6.26.0
         version: 6.26.0
@@ -83,7 +83,7 @@ importers:
         version: 3.23.2
       html-webpack-plugin:
         specifier: ^5.5.3
-        version: 5.6.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3))
+        version: 5.6.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3))
       http-server:
         specifier: ^14.1.1
         version: 14.1.1(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
@@ -119,7 +119,7 @@ importers:
         version: 0.4.0
       karma-webpack:
         specifier: ^5.0.0
-        version: 5.0.1(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3))
+        version: 5.0.1(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3))
       minami:
         specifier: ^1.2.3
         version: 1.2.3
@@ -128,7 +128,7 @@ importers:
         version: 10.8.2
       mocha-loader:
         specifier: ^5.1.5
-        version: 5.1.5(mocha@10.8.2)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3))
+        version: 5.1.5(mocha@10.8.2)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3))
       nyc:
         specifier: ^15.1.0
         version: 15.1.0(supports-color@8.1.1)
@@ -3050,8 +3050,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  nanoid@3.3.15:
-    resolution: {integrity: sha512-y7Wygv/7mEOvxTuEQDB8StXdMRBWf1kR/tlhAzBRUFkB2jfcLOAxO/SHmOO2zgz1pVgK29/kyupn059/bCHdjA==}
+  nanoid@3.3.20:
+    resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -3355,8 +3355,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.15:
-    resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
+  postcss@8.5.30:
+    resolution: {integrity: sha512-zkd+e9S1AQHhmaBKye9zlFHWjOwVgqXl1q3ECYy8561K7qxR2cREf/STLskulBFd78k6AOFeA+ff1TtEzk9bAA==}
     engines: {node: ^10 || ^12 || >=14}
 
   prelude-ls@1.2.1:
@@ -5570,12 +5570,12 @@ snapshots:
 
   b4a@1.8.1: {}
 
-  babel-loader@9.2.1(@babel/core@7.29.7(supports-color@8.1.1))(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)):
+  babel-loader@9.2.1(@babel/core@7.29.7(supports-color@8.1.1))(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       find-cache-dir: 4.0.0
       schema-utils: 4.3.3
-      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)
+      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)
 
   babel-plugin-polyfill-corejs2@0.4.17(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1):
     dependencies:
@@ -6116,19 +6116,19 @@ snapshots:
       randombytes: 2.1.0
       randomfill: 1.0.4
 
-  css-loader@5.2.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)):
+  css-loader@5.2.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.15)
+      icss-utils: 5.1.0(postcss@8.5.30)
       loader-utils: 2.0.4
-      postcss: 8.5.15
-      postcss-modules-extract-imports: 3.1.0(postcss@8.5.15)
-      postcss-modules-local-by-default: 4.2.0(postcss@8.5.15)
-      postcss-modules-scope: 3.2.1(postcss@8.5.15)
-      postcss-modules-values: 4.0.0(postcss@8.5.15)
+      postcss: 8.5.30
+      postcss-modules-extract-imports: 3.1.0(postcss@8.5.30)
+      postcss-modules-local-by-default: 4.2.0(postcss@8.5.30)
+      postcss-modules-scope: 3.2.1(postcss@8.5.30)
+      postcss-modules-values: 4.0.0(postcss@8.5.30)
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.8.5
-      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)
+      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)
 
   css-select@4.3.0:
     dependencies:
@@ -6993,7 +6993,7 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.48.0
 
-  html-webpack-plugin@5.6.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)):
+  html-webpack-plugin@5.6.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -7001,7 +7001,7 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.3.3
     optionalDependencies:
-      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)
+      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)
 
   htmlescape@1.1.1: {}
 
@@ -7077,9 +7077,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.5.15):
+  icss-utils@5.1.0(postcss@8.5.30):
     dependencies:
-      postcss: 8.5.15
+      postcss: 8.5.30
 
   ieee754@1.2.1: {}
 
@@ -7503,11 +7503,11 @@ snapshots:
     dependencies:
       graceful-fs: 4.2.11
 
-  karma-webpack@5.0.1(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)):
+  karma-webpack@5.0.1(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)):
     dependencies:
       glob: 7.2.3
       minimatch: 9.0.9
-      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)
+      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)
       webpack-merge: 4.2.2
 
   karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1):
@@ -7733,14 +7733,14 @@ snapshots:
 
   mkdirp@1.0.4: {}
 
-  mocha-loader@5.1.5(mocha@10.8.2)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)):
+  mocha-loader@5.1.5(mocha@10.8.2)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)):
     dependencies:
-      css-loader: 5.2.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3))
+      css-loader: 5.2.7(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3))
       loader-utils: 2.0.4
       mocha: 10.8.2
       schema-utils: 3.3.0
-      style-loader: 2.0.0(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3))
-      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)
+      style-loader: 2.0.0(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3))
+      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)
 
   mocha@10.8.2:
     dependencies:
@@ -7789,7 +7789,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  nanoid@3.3.15: {}
+  nanoid@3.3.20: {}
 
   natural-compare@1.4.0: {}
 
@@ -8092,26 +8092,26 @@ snapshots:
 
   possible-typed-array-names@1.1.0: {}
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.5.15):
+  postcss-modules-extract-imports@3.1.0(postcss@8.5.30):
     dependencies:
-      postcss: 8.5.15
+      postcss: 8.5.30
 
-  postcss-modules-local-by-default@4.2.0(postcss@8.5.15):
+  postcss-modules-local-by-default@4.2.0(postcss@8.5.30):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.15)
-      postcss: 8.5.15
+      icss-utils: 5.1.0(postcss@8.5.30)
+      postcss: 8.5.30
       postcss-selector-parser: 7.1.6
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.1(postcss@8.5.15):
+  postcss-modules-scope@3.2.1(postcss@8.5.30):
     dependencies:
-      postcss: 8.5.15
+      postcss: 8.5.30
       postcss-selector-parser: 7.1.6
 
-  postcss-modules-values@4.0.0(postcss@8.5.15):
+  postcss-modules-values@4.0.0(postcss@8.5.30):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.15)
-      postcss: 8.5.15
+      icss-utils: 5.1.0(postcss@8.5.30)
+      postcss: 8.5.30
 
   postcss-selector-parser@7.1.6:
     dependencies:
@@ -8120,9 +8120,9 @@ snapshots:
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.15:
+  postcss@8.5.30:
     dependencies:
-      nanoid: 3.3.15
+      nanoid: 3.3.20
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
@@ -8774,11 +8774,11 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  style-loader@2.0.0(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)):
+  style-loader@2.0.0(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)
+      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)
 
   subarg@1.0.0:
     dependencies:
@@ -8834,17 +8834,17 @@ snapshots:
       - bare-abort-controller
       - react-native-b4a
 
-  terser-webpack-plugin@5.6.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)):
+  terser-webpack-plugin@5.6.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       terser: 5.48.0
-      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)
+      webpack: 5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)
     optionalDependencies:
       clean-css: 5.3.3
       html-minifier-terser: 6.1.0
-      postcss: 8.5.15
+      postcss: 8.5.30
       uglify-js: 3.19.3
 
   terser@5.48.0:
@@ -9087,7 +9087,7 @@ snapshots:
 
   webpack-sources@3.5.0: {}
 
-  webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3):
+  webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3):
     dependencies:
       '@types/estree': 1.0.9
       '@types/json-schema': 7.0.15
@@ -9109,7 +9109,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.3
       tapable: 2.3.3
-      terser-webpack-plugin: 5.6.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.15)(uglify-js@3.19.3))
+      terser-webpack-plugin: 5.6.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3)(webpack@5.107.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.30)(uglify-js@3.19.3))
       watchpack: 2.5.2
       webpack-sources: 3.5.0
     transitivePeerDependencies:
