@@ -6,6 +6,7 @@ const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
 
 export default [
     { ignores: ['**/*', '!src/', '!src/**'] },
+    { linterOptions: { reportUnusedDisableDirectives: 'off' } },
     ...compat.extends('airbnb-base'),
     mocha.configs.recommended,
     {
