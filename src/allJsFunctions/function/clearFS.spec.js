@@ -59,6 +59,7 @@ describe('function / clearFS', function () {
     it('cleans /input after conversion (browser only)', async function () {
         if (isNode) {
             // /input is always NODEFS on Node.js — clearFS intentionally skips it
+            // eslint-disable-next-line mocha/no-pending-tests
             this.skip();
             return;
         }

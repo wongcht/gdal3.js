@@ -34,6 +34,7 @@ describe('function / open', function () {
         assert.strictEqual(firstDataset.type === 'vector', true, 'No vector data in input file.');
     });
     if (!isNode) {
+        // eslint-disable-next-line mocha/no-conditional-tests
         it('open FileList', async function () {
             class FileList {
                 constructor() {
